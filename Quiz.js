@@ -38,6 +38,7 @@ class Quiz {
     textSize(30);
 
     //call getContestantInfo( ) here
+    Contestant.getPlayerInfo();
 
     //write condition to check if contestantInfor is not undefined
     if(allContestants !== undefined)
@@ -47,20 +48,23 @@ class Quiz {
       text("Result of The Quiz", 400, 50);
       //write code to add a note here
       text("*Note : The Name marked in Green is the winner!!!", 130, 230);
-    }
-    //write code to highlight contest who answered correctly
-    for(var plr in allContestants)
-    {
-      var correctAns = "2";
-      if(correctAns === allContestans[plr].answers)
+      var display = 120;
+      //write code to highlight contest who answered correctly
+      for(var plr in allContestants)
       {
-        fill("green");
-      }
-      else
-      {
-        fill("red");
+        var correctAns = "2";
+        
+        if(correctAns === allContestants[plr].answer)
+        {
+          fill("green");
+        }
+        else
+        {
+          fill("red");
+        }
+        display = display + 200;
+        text(allContestants[plr].name + ":" + allContestants[plr].answer, display, 300);
       }
     }
-  }
-
+}
 }
